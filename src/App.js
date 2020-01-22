@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import moment from 'moment';
 
 function App() {
+  const [start, setStart] = useState(moment().startOf('week'));
   const [weekState, setWeekState] = useState([]);
-  let start = useState(moment().startOf('week'));
 
   const getWeek = (dir) => {
     const week = [];
@@ -13,12 +13,16 @@ function App() {
     while (week.length < 7) {
       if (dir === 1) {
         week.push(moment(start).add(i++, 'day'));
-        start = moment(start).add(i++, 'day');
       }
       else {
         week.push(moment(start).subtract(i++, 'day'));
-        start = moment(start).subtract(i++, 'day');
       }
+    }
+    if (dir === 1) {
+      setStart(moment(start).add(i++, 'day'));
+    }
+    else {
+      setStart(moment(start).subtract(i++, 'day'));
     }
     setWeekState([...week])
   }
@@ -33,8 +37,8 @@ function App() {
           )
         })}
       </ul>
-      <button onClick={() => getWeek(1)}>Get Week</button>
       <button onClick={() => getWeek(0)}>Get Week</button>
+      <button onClick={() => getWeek(1)}>Get Week</button>
     </div>
   );
 }
