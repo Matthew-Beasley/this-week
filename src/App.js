@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import moment from 'moment';
+import List from './List';
 
 function App() {
   const [start, setStart] = useState(moment().startOf('week'));
@@ -8,7 +9,6 @@ function App() {
   const getWeek = (dir) => {
     const week = [];
     let i = 0;
-
 
     while (week.length < 7) {
       if (dir === 1) {
@@ -30,15 +30,9 @@ function App() {
 
   return (
     <div className="App">
-      <ul>
-        {weekState.map((item, idx) => {
-          return (
-            <li key={idx}>{item.format('MMM Do YYYY')}</li>
-          )
-        })}
-      </ul>
-      <button onClick={() => getWeek(0)}>Get Week</button>
-      <button onClick={() => getWeek(1)}>Get Week</button>
+      <List weekState={weekState}/>
+      <button onClick={() => getWeek(0)}>Get Previous Week</button>
+      <button onClick={() => getWeek(1)}>Get Next Week</button>
     </div>
   );
 }

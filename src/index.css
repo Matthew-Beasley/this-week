@@ -2,3 +2,18 @@ body {
   margin: 3;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+}
+
+li {
+  width:14%;
+  height: 3rem;
+  border: 1px solid black;
+}
